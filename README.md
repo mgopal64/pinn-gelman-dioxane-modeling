@@ -20,7 +20,7 @@ Unlike traditional interpolation, this model ensures that the predicted plume mo
 
 - **Hydrostratigraphic Isolation:** The analysis is focused on the 130-170 ft depth band, a critical high-conductivity basal unit identified through site literature as a primary pathway for eastward migration.
 
-- **Physics Enforcement:** The model is regularized using the 1D ADE:
+- **Physics Enforcement:** The model is regularized using the 1D Advection-Dispersion equation, foundational to hydrology:
 
 $$\frac{\partial C}{\partial t} + v \frac{\partial C}{\partial x} - D \frac{\partial^2 C}{\partial x^2} = 0$$
 
