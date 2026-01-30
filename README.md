@@ -14,6 +14,8 @@ This project implements a **Physics-Informed Neural Network (PINN)** to model th
 
 Unlike traditional interpolation, this model ensures that the predicted plume movement is **physically constrained by fluid dynamics**, offering a high-fidelity forecast for long-term remediation planning.
 
+This project has a lot of personal meaning to me. When I first learned about it at UMich's CEE 365 class, I couldn't believe this environmental disaster isn't talked about more. 1,4-dioxane is a cancer-causing chemical, and Ann Arbor residents have had to close down their residential wells due to detections of it. I hope this model, on top of modeling its spread throughout my college town, will spread awareness of this issue. 
+
 ---
 
 ## 🛠 Methodology
