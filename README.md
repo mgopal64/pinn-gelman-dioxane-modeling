@@ -1,6 +1,6 @@
 # PINN-based Spatiotemporal Forecasting of 1,4-Dioxane Migration
 
-**Modeling the Gelman Plume 130-170ft Aquifer Unit**
+**Modeling the Gelman Plume in the 130-170ft Aquifer unit**
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/Gelman_PINN.ipynb)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
