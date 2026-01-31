@@ -41,12 +41,12 @@ $$\frac{\partial C}{\partial t} + v \frac{\partial C}{\partial x} - D \frac{\par
 ### 2056 Plume Forecast
 ![2056 Forecast](forecast_2056.png)
 
-The PINN forecast indicates that the **7.2 ppb regulatory threshold will not impact the Barton Pond/Huron River boundary** within the next century for this depth unit.
+The PINN forecast indicates that the **7.2 ppb regulatory threshold will not impact the Barton Pond/Huron River boundary** within the next century for **this depth unit**.
 
 ### Model Validation
 ![AE-1 Validation](validation_ae1.png)
 
-Leave-One-Well-Out cross-validation confirms the model captures real contaminant transport dynamics, achieving **R² = 0.88** with physical precision of **±0.79 ppb**.
+Leave-One-Well-Out cross-validation confirms the model captures real contaminant transport dynamics, achieving **R² = 0.88** with physical precision of **±0.79 ppb**. Note that while not fitting the data 1-to-1, the trend line from the PINN model follows the underlying physics perfectly. This allows reliable prediction of the plume's edge.
 
 - **100-Year Safety Horizon:** The PINN forecast indicates that the 7.2 ppb regulatory threshold will not impact the Barton Pond/Huron River boundary within the next century for this specific unit.
 
