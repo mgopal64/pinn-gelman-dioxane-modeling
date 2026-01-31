@@ -24,8 +24,9 @@ Unlike traditional interpolation, this model ensures that the predicted plume mo
 
 ## 🛠 Methodology
 
-- **Hydrostratigraphic Isolation:** The analysis is focused on the 130-170 ft depth band, a critical high-conductivity basal unit identified through site literature as a primary pathway for eastward migration.
 
+- **Hydrostratigraphic Isolation:** The analysis focuses on wells screened at 130-170 ft depth, corresponding to the **Intermediate Aquifer Zone** within the Unit E plume system—a high-conductivity glacial outwash unit that serves as a primary northeastward migration pathway toward the Huron River ([PLS Conceptual Site Model, 2014](https://www.michigan.gov/egle/-/media/Project/Websites/egle/Documents/Programs/RRD/Gelman/Selected-Documents/2014/pls-January-2014-Letter-Concerning-MW-103-Conceptual-Site-Model.pdf); [Loch-Caruso et al., 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9835328/)).
+  
 - **Physics Enforcement:** The model is regularized using the 1D Advection-Dispersion equation, foundational to hydrology:
 
 $$\frac{\partial C}{\partial t} + v \frac{\partial C}{\partial x} - D \frac{\partial^2 C}{\partial x^2} = 0$$
