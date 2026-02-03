@@ -1,6 +1,6 @@
 # PINN-based Spatiotemporal Forecasting of 1,4-Dioxane Migration
 
-**Physics-Informed Modeling of the Gelman Plume (Unit E & Unit C3)**
+**Physics-Informed Modeling of the Gelman Plume (Unit E & Unit C3 Aquifers)**
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mgopal64/pinn-gelman-dioxane-modeling/blob/main/Gelman_PINN.ipynb)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
