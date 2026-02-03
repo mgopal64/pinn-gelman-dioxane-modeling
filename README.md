@@ -31,7 +31,7 @@ Unlike traditional interpolation, this model ensures that predictions are **phys
 
 ### 1. The 3-Input Architecture (x, z, t)
 
-We upgraded from a standard 1D model to a **3-input Deep Neural Network** that accounts for vertical variations (z) within the aquifer. This allows the model to differentiate between the plume's "core" and its dispersed edges.
+I upgraded from a standard 1D model to a **3-input Deep Neural Network** that accounts for vertical variations (z) within the aquifer. This allows the model to differentiate between the plume's "core" and its dispersed edges.
 
 ### 2. Physics Enforcement
 
