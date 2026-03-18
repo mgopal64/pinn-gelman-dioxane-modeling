@@ -1,0 +1,85 @@
+# Gelman Sciences 1,4-Dioxane PINN — master configuration
+# All hardcoded values from the notebooks live here.
+
+data:
+  # Loader resolves formats in order: .parquet → .csv.gz → this path (pkl).
+  # Run  python scripts/strip_arcgis.py  once to generate the parquet/csv.gz
+  # files and eliminate the arcgis dependency entirely.
+  pkl_path: "data/processed/merged_df.parquet"
+  perp_buffer_ft: 1000       # max lateral offset from transect centerline
+  min_value_ppb: 0.5         # drop measurements below this threshold
+  t_start: "1986-01-01"      # reference epoch for time normalization
+  drop_not_detected: true    # exclude "Not Detected" rows from training data
+
+normalization:
+  x_max_dist: 18178.0        # ft — source-to-Barton-Pond transect length
+  t_max_years: 70.0          # normalization window: 1986–2056
+  c_max_raw: 212001          # C_norm = log10(value+1) / log10(c_max_raw)
+
+# Michigan State Plane East coordinates (US survey feet)
+coordinates:
+  source: [13278097, 279314]   # Gelman Sciences source site
+  target: [13286705, 298215]   # Barton Pond drinking water intake
+
+geography:
+  source_latlon: [42.2845, -83.7865]
+  target_latlon: [42.3365, -83.7540]
+  regulatory_limit_ppb: 7.2   # Michigan Safe Drinking Water Act standard
+
+units:
+  unit_e:
+    name: "Unit E (130-170 ft)"
+    weights: "models/pinn_130_170_3input_final.pth"
+    min_depth: 130
+    max_depth: 170
+    # Sigmoid-constrained physics bounds (ft/day).
+    # v: 170–350 ft/yr → 0.46–0.96 ft/day
+    # D: 2,000–8,000 ft²/yr → 5.47–21.90 ft²/day
+    v_bounds: [0.46, 0.96]
+    d_bounds: [5.47, 21.90]
+    # Lateral (y-direction) loss coefficient (1/yr). Bounded positive via sigmoid.
+    # First-order sink for mass leaving the 1D transect corridor sideways —
+    # NOT vertical transport (that is handled by the Dz*d2C/dz2 term in the ADE).
+    # Range calibrated to Lemke (2022) 2,200 kg mass-balance deficit.
+    # 0.0 = no lateral loss; 0.02 = ~2% mass loss per year (conservative upper bound).
+    lambda_bounds: [0.0, 0.02]
+
+  unit_c3:
+    name: "Unit C3 (50-90 ft)"
+    weights: "models/weights_50_90ft_v2.pth"
+    min_depth: 50
+    max_depth: 90
+    # v: 150–250 ft/yr → 0.41–0.68 ft/day
+    # D: 1,000–5,000 ft²/yr → 2.73–13.68 ft²/day
+    v_bounds: [0.41, 0.68]
+    d_bounds: [2.73, 13.68]
+    # Lateral loss coefficient (1/yr) — same physical meaning as unit_e.
+    # Slightly higher upper bound: Unit C3 is shallower with a wider plume footprint.
+    lambda_bounds: [0.0, 0.05]
+
+# 1986 "Discovery Era" initial condition anchors.
+# Uses a broader depth/buffer window than unit training data.
+initial_conditions:
+  year_cutoff: 1987
+  perp_buffer_ft: 5000
+  depth_min: 50
+  depth_max: 250
+
+# Full training (train.py)
+training:
+  adam_epochs: 10000
+  adam_lr: 0.001
+  lbfgs_max_iter: 50000
+  lbfgs_history_size: 50
+  physics_weight: 5.0
+  n_collocation: 10000
+  seed: 42
+
+# Leave-One-Well-Out validation (evaluate.py)
+# Uses Adam only (no L-BFGS) to keep per-fold runtime manageable.
+lowo:
+  adam_epochs: 3000
+  adam_lr: 0.001
+  physics_weight: 5.0
+  n_collocation: 10000
+  min_test_samples: 3        # skip wells with fewer test points than this

@@ -1,0 +1,12 @@
+torch>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+pyyaml>=6.0
+pyarrow>=12.0.0        # required to read merged_df.parquet
+# Optional: geographic heatmap (visualize.py --plot heatmap)
+folium>=0.14.0
+branca>=0.6.0
+# arcgis is NO LONGER required. The original merged_df.pkl has been converted
+# to merged_df.parquet via  python scripts/strip_arcgis.py.
