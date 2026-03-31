@@ -16,6 +16,7 @@ Usage:
 import argparse
 import os
 import sys
+from xml.parsers.expat import model
 
 import torch
 import yaml
@@ -202,6 +203,8 @@ def main():
         adam_epochs=args.adam_epochs,
         run_lbfgs=not args.no_lbfgs,
     )
+    # At the bottom of train.py, before main() exits:
+    save_model(model, "models/weights_retrained.pth", extra={"notes": "no sigmoid, scalar lambda"})
 
 
 if __name__ == "__main__":
