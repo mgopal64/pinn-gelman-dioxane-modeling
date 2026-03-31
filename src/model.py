@@ -52,7 +52,7 @@ class DioxanePINN(nn.Module):
             nn.Linear(64, 64), nn.Tanh(),
             nn.Linear(64, 64), nn.Tanh(),
             nn.Linear(64, 64), nn.Tanh(),
-            nn.Linear(64, 1), nn.Sigmoid(),
+            nn.Linear(64, 1),
         )
         self.v_raw = nn.Parameter(torch.tensor([0.0]))
         self.D_raw = nn.Parameter(torch.tensor([0.0]))
@@ -65,7 +65,8 @@ class DioxanePINN(nn.Module):
             x_combined: [N, 3] tensor with columns [x_norm, z_norm, t_norm].
 
         Returns:
-            [N, 1] tensor of normalized log-concentrations in (0, 1).
+            [N, 1] tensor of normalized log-concentrations (unconstrained).
+            Prev. used to be constrained to [0,1] with Sigmoid
         """
         return self.network(x_combined)
 
