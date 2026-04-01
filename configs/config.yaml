@@ -29,7 +29,7 @@ geography:
 units:
   unit_e:
     name: "Unit E (130-170 ft)"
-    weights: "models/pinn_130_170_3input_final.pth"
+    weights: "models/unit_e_130_170ft_v3.pth"
     min_depth: 130
     max_depth: 170
     # Sigmoid-constrained physics bounds (ft/day).
@@ -46,7 +46,7 @@ units:
 
   unit_c3:
     name: "Unit C3 (50-90 ft)"
-    weights: "models/weights_50_90ft_v2.pth"
+    weights: "models/unit_c3_50_90ft_v3.pth"
     min_depth: 50
     max_depth: 90
     # v: 150–250 ft/yr → 0.41–0.68 ft/day
